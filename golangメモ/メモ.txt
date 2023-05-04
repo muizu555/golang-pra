@@ -1,0 +1,124 @@
+golangの勉強を始める 2023 5/4
+why 
+業務で使う可能性があるため
+
+
+
+文字列はバイト配列の集まり
+定数はconst　変数はvar  なお、定数は := を使って宣言できません。
+
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("HelloWorld")
+}
+
+このコードは、Go言語で最もシンプルなプログラムであり、単に "HelloWorld" という文字列をコンソールに出力するプログラムです。
+
+まず、 package main という行は、このファイルが main パッケージに属していることを示しています。 main パッケージは、Go言語の中で特別な役割を持ち、 main() 関数を含む必要があります。
+
+次に、 import "fmt" という行は、 "fmt" パッケージをインポートしていることを示しています。 "fmt" パッケージは、コンソールへの出力や文字列のフォーマットなど、基本的な入出力操作を扱うために使用されます。
+
+最後に、 fmt.Println("HelloWorld") という行は、 "fmt" パッケージに含まれる Println() 関数を呼び出して、引数として与えられた文字列をコンソールに出力しています。 このプログラムを実行すると、コンソールに "HelloWorld" という文字列が表示されます。
+
+
+
+package main
+
+import "fmt"
+
+func swap(x, y string) (string, string) {  複数の返り値かえせる  x, y stringはどっちも同じ型なら最初の方を省略できる
+	return y, x
+}
+
+func main() {
+	a, b := swap("hello", "world")
+	fmt.Println(a, b)
+}
+
+
+型の暗黙的な定義　　関数内でしか定義できない
+a := 50
+fmt.Println(a);
+
+Goは定義された変数は必ず使う。
+
+
+//これをNamed return valuesというらしい
+
+func split(sum int) (x, y int) {
+	x = sum * 4 / 9
+	y = sum - x
+	return
+}
+
+func main() {
+	fmt.Println(split(17))
+}
+
+
+//
+package main
+
+import "fmt"
+
+var c, python, java bool
+
+func main() {                                                  
+	var i int
+	fmt.Println(i, c, python, java)   0 false false false
+	数値型(int,floatなど): 0
+	bool型: false
+	string型: "" (空文字列( empty string ))
+}
+//
+package main
+
+import "fmt"
+
+var i, j int = 1, 2
+
+func main() {
+	var c, python, java = true, false, "no!"   //初期化子が与えられている場合、型を省略できます。その変数は初期化子が持つ型になります。
+	fmt.Println(i, j, c, python, java)
+}
+
+//
+package main
+
+import "fmt"
+
+//配列型  後から要素数を変更できない  ->スライス
+
+func main() {
+	var arr1 [3]int
+	fmt.Println(arr1)
+	fmt.Printf("%T\n", arr1) //型を調べる時はPrintf   
+
+}
+
+output:
+[0 0 0]
+[3]int  //[3]intまでが型＝＞だから要素数を変えることができない
+
+
+
+//
+package main    つまり、C言語などにある while は、Goでは for だけを使います。
+
+import "fmt"
+
+func main() {
+	sum := 1
+	for sum < 5 {
+		sum += sum
+	}
+	fmt.Println(sum)
+}
+
+
+
+
+

@@ -2,13 +2,24 @@ package main
 
 import (
 	"fmt"
-	"net/http" //これがサーバーを立てる合図？
 )
 
-func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
-	})
+var y int = 90
 
-	http.ListenAndServe(":3000", nil)
+func outer() {
+	var s4 string = "Hello"
+	fmt.Println(s4)
 }
+
+func swap(x, y string) (string, string) {
+	return y, x
+}
+
+func main() {
+	a, b := swap("hello", "world")
+	fmt.Println(a, b)
+	outer()
+	fmt.Printf("%T\n", y) //型を教えてくれる
+}
+
+//go buildでコンパイル
